@@ -6,6 +6,10 @@ const SummaryPage = ({ checklist, onItemEdit }) => {
   return (
     <Flex direction="column" gap="md">
       <ChecklistTable checklist={checklist} onItemEdit={onItemEdit} />
+      <Text>
+        Please click on &quot;Edit&quot; to complete missing items. When the
+        checklist is complete, you may send the work order to the installer.
+      </Text>
       <Box alignSelf="end">
         <ButtonRow>
           <Button

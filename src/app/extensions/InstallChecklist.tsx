@@ -15,6 +15,7 @@ hubspot.extend<'crm.record.tab'>((props) => (
   <Card runServerless={props.runServerlessFunction} />
 ));
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Card = ({ runServerless }) => {
   const { error, loading, checklist, reload } = useChecklist();
   const [page, setPage] = useState<ChecklistItem['key'] | null>(null);
