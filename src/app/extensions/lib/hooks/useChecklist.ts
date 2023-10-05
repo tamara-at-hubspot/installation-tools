@@ -6,10 +6,10 @@ const useChecklist = () => {
   const [error] = useState(null);
   const [checklist] = useState<Checklist | null>(() => ({
     items: [
-      { item: 'Address', completed: true },
-      { item: 'Cost', completed: true },
-      { item: 'Description', completed: false },
-      { item: 'Contacts', completed: true },
+      { key: 'Address', completed: true },
+      { key: 'Cost', completed: true },
+      { key: 'Description', completed: false },
+      { key: 'Contacts', completed: true },
     ],
   }));
 

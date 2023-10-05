@@ -1,11 +1,17 @@
 import React from 'react';
 import { Tag } from '@hubspot/ui-extensions';
+import { ChecklistItem } from '../types/checklist';
 
-const StatusTag = ({ completed }: { completed: boolean }) => {
-  if (completed) {
+interface Props {
+  item: ChecklistItem;
+  onEdit: () => void;
+}
+
+const StatusTag = ({ item, onEdit }: Props) => {
+  if (item.completed) {
     return <Tag variant="success">Completed</Tag>;
   }
-  return <Tag>Edit</Tag>;
+  return <Tag onClick={onEdit}>Edit</Tag>;
 };
 
 export default StatusTag;
