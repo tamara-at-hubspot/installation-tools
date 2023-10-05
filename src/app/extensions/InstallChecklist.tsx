@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  Box,
   Button,
-  ButtonRow,
   ErrorState,
-  Flex,
   LoadingSpinner,
   Text,
   hubspot,
 } from '@hubspot/ui-extensions';
-import ChecklistTable from './lib/components/ChecklistTable';
+import { ChecklistItem } from './lib/types/checklist';
 import useChecklist from './lib/hooks/useChecklist';
+import SummaryPage from './lib/pages/SummaryPage';
+import DescriptionPage from './lib/pages/DescriptionPage';
 
 hubspot.extend<'crm.record.tab'>((props) => (
   <Card runServerless={props.runServerlessFunction} />
@@ -18,6 +17,8 @@ hubspot.extend<'crm.record.tab'>((props) => (
 
 const Card = ({ runServerless }) => {
   const { error, loading, checklist, reload } = useChecklist();
+  const [page, setPage] = useState<ChecklistItem['key'] | null>(null);
+
   if (loading) {
     return (
       <LoadingSpinner
@@ -36,22 +37,24 @@ const Card = ({ runServerless }) => {
     );
   }
 
-  return (
-    <Flex direction="column" gap="md">
-      <ChecklistTable checklist={checklist} />
-      <Box alignSelf="end">
-        <ButtonRow>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={() => {
-              console.log('Sending the order to the installer...');
-            }}
-          >
-            Send to Installer
-          </Button>
-        </ButtonRow>
-      </Box>
-    </Flex>
-  );
+  switch (page) {
+    case 'Description':
+      return (
+        <DescriptionPage
+          onSubmit={() => {
+            setPage(null);
+            reload();
+          }}
+          onCancel={() => setPage(null)}
+        />
+      );
+    // TODO: add pages for other items
+    default:
+      return (
+        <SummaryPage
+          checklist={checklist}
+          onItemEdit={(item) => setPage(item.key)}
+        />
+      );
+  }
 };

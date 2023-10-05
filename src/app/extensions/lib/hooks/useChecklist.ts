@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
-import { type Checklist } from '../types/checklist';
+import { Checklist } from '../types/checklist';
 
 const useChecklist = () => {
   const [loading] = useState(false);
   const [error] = useState(null);
-  const [checklist] = useState<Checklist | null>(() => ({
+  const [checklist, setChecklist] = useState<Checklist | null>(() => ({
     items: [
       { key: 'Address', completed: true },
       { key: 'Cost', completed: true },
@@ -15,7 +15,16 @@ const useChecklist = () => {
 
   // TODO actually fetch the checklist states
 
-  const reload = useCallback(() => {}, []);
+  const reload = useCallback(() => {
+    setChecklist({
+      items: [
+        { key: 'Address', completed: true },
+        { key: 'Cost', completed: true },
+        { key: 'Description', completed: true },
+        { key: 'Contacts', completed: true },
+      ],
+    });
+  }, [setChecklist]);
 
   return { loading, error, checklist, reload };
 };

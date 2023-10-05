@@ -7,14 +7,15 @@ import {
   TableHeader,
   TableRow,
 } from '@hubspot/ui-extensions';
-import { ItemOptions, type Checklist } from '../types/checklist';
+import { ItemOptions, Checklist, ChecklistItem } from '../types/checklist';
 import StatusTag from './StatusTag';
 
 interface Props {
   checklist: Checklist;
+  onItemEdit: (item: ChecklistItem) => void;
 }
 
-const ChecklistTable = ({ checklist }: Props) => {
+const ChecklistTable = ({ checklist, onItemEdit }: Props) => {
   return (
     <Table bordered>
       <TableHead>
@@ -28,7 +29,12 @@ const ChecklistTable = ({ checklist }: Props) => {
           <TableRow key={`quote-${idx}`}>
             <TableCell>{ItemOptions[item.key]}</TableCell>
             <TableCell>
-              <StatusTag item={item} onEdit={() => {}} />
+              <StatusTag
+                item={item}
+                onEdit={() => {
+                  onItemEdit(item);
+                }}
+              />
             </TableCell>
           </TableRow>
         ))}
