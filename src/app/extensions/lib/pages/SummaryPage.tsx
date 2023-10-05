@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, ButtonRow, Button } from '@hubspot/ui-extensions';
+import { Flex, Box, ButtonRow, Button, Text } from '@hubspot/ui-extensions';
 import ChecklistTable from '../components/ChecklistTable';
 
 const SummaryPage = ({ checklist, onItemEdit }) => {
