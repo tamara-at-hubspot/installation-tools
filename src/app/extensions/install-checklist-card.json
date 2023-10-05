@@ -7,6 +7,6 @@
     "module": {
       "file": "InstallChecklist.tsx"
     },
-    "objectTypes": [{ "name": "contacts" }]
+    "objectTypes": [{ "name": "p_installs" }]
   }
 }

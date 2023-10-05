@@ -7,6 +7,6 @@
     "module": {
       "file": "WorkOrder.tsx"
     },
-    "objectTypes": [{ "name": "contacts" }]
+    "objectTypes": [{ "name": "p_installs" }]
   }
 }
