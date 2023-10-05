@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tag } from '@hubspot/ui-extensions';
-import { ChecklistItem } from '../types/checklist';
+import { type ChecklistItem } from '../types/checklist';
 
 interface Props {
   item: ChecklistItem;

@@ -6,7 +6,7 @@ import {
   Text,
   hubspot,
 } from '@hubspot/ui-extensions';
-import { ChecklistItem } from './lib/types/checklist';
+import { type ChecklistItem } from './lib/types/checklist';
 import useChecklist from './lib/hooks/useChecklist';
 import SummaryPage from './lib/pages/SummaryPage';
 import DescriptionPage from './lib/pages/DescriptionPage';

@@ -7,7 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from '@hubspot/ui-extensions';
-import { ItemOptions, Checklist, ChecklistItem } from '../types/checklist';
+import {
+  ItemOptions,
+  type Checklist,
+  type ChecklistItem,
+} from '../types/checklist';
 import StatusTag from './StatusTag';
 
 interface Props {

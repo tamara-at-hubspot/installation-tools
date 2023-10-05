@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Checklist } from '../types/checklist';
+import { type Checklist } from '../types/checklist';
 
 const useChecklist = () => {
   const [loading] = useState(false);
