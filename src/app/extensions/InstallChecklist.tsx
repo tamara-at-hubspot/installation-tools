@@ -1,7 +1,10 @@
 import React from 'react';
 import {
+  Box,
   Button,
+  ButtonRow,
   ErrorState,
+  Flex,
   LoadingSpinner,
   Text,
   hubspot,
@@ -32,5 +35,23 @@ const Card = ({ runServerless }) => {
       </ErrorState>
     );
   }
-  return <ChecklistTable checklist={checklist} />;
+
+  return (
+    <Flex direction="column" gap="md">
+      <ChecklistTable checklist={checklist} />
+      <Box alignSelf="end">
+        <ButtonRow>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => {
+              console.log('Sending the order to the installer...');
+            }}
+          >
+            Send to Installer
+          </Button>
+        </ButtonRow>
+      </Box>
+    </Flex>
+  );
 };
