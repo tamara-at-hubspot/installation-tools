@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "uid": "install-checklist-card",
+    "title": "Install Checklist",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "InstallChecklist.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

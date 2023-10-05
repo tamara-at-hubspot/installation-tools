@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "uid": "work-order-card",
+    "title": "Work Order",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "WorkOrder.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
