@@ -2,7 +2,12 @@
   "uid": "installation-tools-app",
   "name": "Installation Tools",
   "description": "This app demonstrates custom cards for installations.",
-  "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.objects.custom.read",
+    "crm.objects.custom.write"
+  ],
   "public": false,
   "extensions": {
     "crm": {
