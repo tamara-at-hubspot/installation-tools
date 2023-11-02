@@ -3,7 +3,6 @@ import { Flex, Box, Button, Text } from '@hubspot/ui-extensions';
 import ChecklistTable from '../components/ChecklistTable';
 
 const SummaryPage = ({ checklist, onItemEdit }) => {
-  const allCompleted = checklist.items.every((item) => item.completed);
   return (
     <Flex direction="column" gap="md">
       <ChecklistTable checklist={checklist} onItemEdit={onItemEdit} />
@@ -13,7 +12,6 @@ const SummaryPage = ({ checklist, onItemEdit }) => {
       </Text>
       <Box alignSelf="end">
         <Button
-          disabled={!allCompleted}
           variant="primary"
           type="submit"
           onClick={() => {
