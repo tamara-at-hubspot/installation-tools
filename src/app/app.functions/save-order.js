@@ -1,4 +1,4 @@
-exports.main = (context = {}, callback) => {
+exports.main = (context = {}) => {
   console.log(context.propertiesToSend);
-  return callback({});
+  return {};
 };

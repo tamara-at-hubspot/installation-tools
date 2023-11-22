@@ -2,6 +2,9 @@
   "appFunctions": {
     "save-order": {
       "file": "save-order.js"
+    },
+    "fetch-checklist-items": {
+      "file": "fetch-checklist-items.js"
     }
   }
 }
