@@ -14,15 +14,16 @@ import {
   ServerlessContext,
   wrapRunServerless,
 } from './lib/contexts/ServerlessContext';
+import AddressPage from './lib/pages/AddressPage';
 
-hubspot.extend<'crm.record.tab'>(({ runServerlessFunction }) => (
+hubspot.extend<'crm.record.tab'>(({ runServerlessFunction, actions }) => (
   // Wrap the serverless runner in a Context so that we don't have to prop drill
   <ServerlessContext.Provider value={wrapRunServerless(runServerlessFunction)}>
-    <Card />
+    <Card actions={actions} />
   </ServerlessContext.Provider>
 ));
 
-const Card = () => {
+const Card = ({ actions }) => {
   const { error, loading, checklist, reload } = useChecklist();
   const [page, setPage] = useState<ChecklistItem['key'] | null>(null);
 
@@ -51,6 +52,17 @@ const Card = () => {
           onSubmit={() => {
             setPage(null);
             reload();
+          }}
+          onCancel={() => setPage(null)}
+        />
+      );
+    case 'Address':
+      return (
+        <AddressPage
+          onSubmit={() => {
+            setPage(null);
+            reload();
+            actions.refreshObjectProperties(); // refresh properties on the page
           }}
           onCancel={() => setPage(null)}
         />

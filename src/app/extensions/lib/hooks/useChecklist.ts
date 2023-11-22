@@ -21,7 +21,7 @@ const useChecklist = () => {
       // We could also use the fetchCrmObjectProperties action
       // This is just to illustrate serverless function calls
       const response = (await serverless({
-        name: 'fetch-checklist-items',
+        name: 'fetch-properties',
         propertiesToSend: ['onsite_location', 'total_cost'],
       })) as Record<string, unknown>;
       const { address, cost } = response;
