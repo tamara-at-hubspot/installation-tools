@@ -10,13 +10,19 @@ import { type ChecklistItem } from './lib/types/checklist';
 import useChecklist from './lib/hooks/useChecklist';
 import SummaryPage from './lib/pages/SummaryPage';
 import DescriptionPage from './lib/pages/DescriptionPage';
+import {
+  ServerlessContext,
+  wrapRunServerless,
+} from './lib/contexts/ServerlessContext';
 
-hubspot.extend<'crm.record.tab'>((props) => (
-  <Card runServerless={props.runServerlessFunction} />
+hubspot.extend<'crm.record.tab'>(({ runServerlessFunction }) => (
+  // Wrap the serverless runner in a Context so that we don't have to prop drill
+  <ServerlessContext.Provider value={wrapRunServerless(runServerlessFunction)}>
+    <Card />
+  </ServerlessContext.Provider>
 ));
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Card = ({ runServerless }) => {
+const Card = () => {
   const { error, loading, checklist, reload } = useChecklist();
   const [page, setPage] = useState<ChecklistItem['key'] | null>(null);
 
